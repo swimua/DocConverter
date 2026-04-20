@@ -1,0 +1,13 @@
+services:
+  word-to-pdf:
+    build: .
+    image: word-to-pdf-service:local
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      EnableSwagger: "true"
+      AUTH__APIKEY__KEYS: "dev-key-please-change"
+      CONVERTER__TIMEOUTSECONDS: "90"
+      CONVERTER__MAXUPLOADMB: "50"
+    restart: unless-stopped
